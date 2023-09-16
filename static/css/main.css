@@ -1,0 +1,9 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai:100,200,300,regular,500,600,700);
+
+@import url(/static/css/components/navbar.css);
+
+* {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+  transition: all .3s;
+}
