@@ -1,0 +1,18 @@
+{
+  "name": "katz-gallery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/katzEco/katz-gallery.git",
+  "author": "Suphakit P. <me@suphakit.net>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2",
+    "nodemon": "^3.0.1"
+  }
+}
