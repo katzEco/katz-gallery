@@ -1,3 +1,5 @@
+const color = require('bash-color')
+
 function Month(no) {
   const months = [
     'Jan.',
@@ -18,8 +20,8 @@ function Month(no) {
 }
 
 const date = new Date()
-const DateLine = `${Month(
-  date.getMonth()
-)} ${date.getDate()}, ${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`
+const DateLine = `${color.yellow(
+  `${Month(date.getMonth())} ${date.getDate()}, ${date.getFullYear()}`
+)} | ${date.getHours()}:${date.getMinutes()}`
 
 module.exports = DateLine

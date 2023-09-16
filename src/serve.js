@@ -1,3 +1,4 @@
+const color = require('bash-color')
 const DateLine = require('./modules/date')
 
 function Serve(app) {
@@ -5,7 +6,9 @@ function Serve(app) {
 
   app.listen(port, () => {
     console.log()
-    console.log('Server Started @ ' + `http://localhost:${port}`)
+    console.log(
+      'Server Started @ ' + `${color.cyan(`http://localhost:${port}`)}`
+    )
     console.log(DateLine)
     console.log()
   })
