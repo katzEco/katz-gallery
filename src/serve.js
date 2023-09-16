@@ -7,9 +7,11 @@ function Serve(app) {
   app.listen(port, () => {
     console.log()
     console.log(
-      'Server Started @ ' + `${color.cyan(`http://localhost:${port}`)}`
+      `${color.cyan('⎹')} ` +
+        'Server Started @ ' +
+        `${color.cyan(`http://localhost:${port}`)}`
     )
-    console.log(DateLine)
+    console.log(`${color.cyan('⎹')} ` + DateLine)
     console.log()
   })
 }
