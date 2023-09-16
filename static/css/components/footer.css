@@ -1,0 +1,48 @@
+.footer {
+  width: 100%;
+
+  background: #fe6e6f;
+
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.footer > div {
+  width: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem !important;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer > div > p {
+  width: 100%;
+}
+
+.footer > div > p.left {
+  justify-content: start;
+  text-align: left;
+}
+
+.footer > div > p.right {
+  justify-content: end;
+  text-align: right;
+}
+
+.footer p {
+  color: whitesmoke;
+  margin: 0;
+}
+
+.footer a {
+  color: whitesmoke;
+  text-decoration: underline;
+  transition: all .3s;
+}
+
+.footer a:hover {
+  text-decoration: none;
+  opacity: .6;
+}
