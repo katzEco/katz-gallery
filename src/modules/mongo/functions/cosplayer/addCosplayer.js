@@ -3,9 +3,7 @@ const cosplayer = require('../../schemas/cosplayer')
 async function addAlbum(cosName) {
   let returnData
 
-  const check = await cosplayer
-    .findOne({ cpName: cosName }, '_id cpName date')
-    .exec()
+  const check = await cosplayer.findOne({ cpName: cosName }).exec()
 
   if (check != undefined) {
     returnData = {
