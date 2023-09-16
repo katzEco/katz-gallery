@@ -1,7 +1,7 @@
+const IndexPage = require('./routes/index')
+
 async function Route(app) {
-  app.get('/', (req, res) => {
-    res.send('server spawned!')
-  })
+  await IndexPage(app)
 }
 
 module.exports = Route

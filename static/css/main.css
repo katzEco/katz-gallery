@@ -5,6 +5,7 @@
 /* Components */
 @import url(/static/css/components/navbar.css);
 @import url(/static/css/components/footer.css);
+@import url(/static/css/components/container.css);
 
 * {
   font-family: 'IBM Plex Sans Thai', sans-serif;
