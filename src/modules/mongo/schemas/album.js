@@ -5,6 +5,10 @@ const albumListing = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cpID: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     default: new Date(),

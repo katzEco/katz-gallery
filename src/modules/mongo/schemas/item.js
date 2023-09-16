@@ -19,4 +19,4 @@ const imageItems = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('album', imageItems)
+module.exports = mongoose.model('image', imageItems)
