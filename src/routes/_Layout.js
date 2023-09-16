@@ -10,17 +10,19 @@ function Layout(head, body, page) {
 
   <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
   <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> 
 
   ${head}
 </head>
-<body data-theme="dark">
+<body data-theme="light">
   ${NavBar(page)}
   <div id="main">
     ${body}
   </div>
   ${Footer}
-  
+
   <script src="https://kit.fontawesome.com/5ce8c23949.js" crossorigin="anonymous"></script>
+  <script src="/static/js/theme.js"></script> 
 </body>
 </html>`
 

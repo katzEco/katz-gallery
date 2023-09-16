@@ -23,6 +23,12 @@
   transition: all .3s;
 }
 
+.navBar div a.activeButton {
+  opacity: .6;
+  background: #d25b5b;
+  text-decoration: none;
+}
+
 .navBar div a:hover {
   opacity: .6;
   background: #d25b5b;

@@ -1,5 +1,7 @@
 function Button(text, link, activeStatus) {
-  let button = `<a href="${link}" class="button ${activeStatus}">
+  let button = `<a href="${link}" class="button ${
+    activeStatus == true ? 'activeButton' : ''
+  }">
   ${text}
 </a>`
 
@@ -17,6 +19,9 @@ function NavBar(page) {
         ? Button('About', '/about', false)
         : Button('About', '#', true)
     }
+    <a href="#" class="button" id="theme">
+      ☀️
+    </a>
   </div>
 </div>`
 
