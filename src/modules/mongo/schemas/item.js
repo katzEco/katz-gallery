@@ -9,6 +9,10 @@ const imageItems = new mongoose.Schema({
     type: String,
     require: true,
   },
+  fileType: {
+    type: String,
+    require: true,
+  },
   date: {
     type: Date,
     default: new Date(),
