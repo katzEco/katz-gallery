@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 
 function Middleware(app, exp, root) {
   app.use('/static', exp.static(root + '/static'))
-  app.use(exp.urlencoded({ extended: true }))
+  app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
 
   app.use(cookieParser())
