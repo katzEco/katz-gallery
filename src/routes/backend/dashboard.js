@@ -47,7 +47,7 @@ function dashboard() {
   return Layout(head, body, true)
 }
 
-function backendDashBoard(app) {
+async function backendDashBoard(app) {
   app.get('/backend/dashboard', (req, res) => {
     if (req.session.loggedIn) {
       res.send(dashboard())
