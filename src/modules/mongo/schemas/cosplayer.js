@@ -3,6 +3,7 @@ let mongoose = require('mongoose')
 const cosplayer = new mongoose.Schema({
   cpName: {
     type: String,
+    unique: true,
     required: true,
   },
   date: {
