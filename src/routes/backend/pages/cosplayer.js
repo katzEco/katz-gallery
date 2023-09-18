@@ -122,6 +122,7 @@ async function addPage(status) {
       name="cosName"
       id="cosName"
       placeholder="Cosplayer Name"
+      required
     />
     <button type="submit">Add</button>
 
@@ -152,16 +153,18 @@ async function cpFunction(app) {
 
   app.post('/api/cosplayer/add', async (req, res) => {
     if (req.session.loggedIn) {
-      const saveData = await cpAdd(req.body.cosName)
+      if (req.body.cosName != undefined && req.body.cosName != '') {
+        const saveData = await cpAdd(req.body.cosName)
 
-      console.log(saveData)
+        console.log(saveData)
 
-      if (saveData.status == 200) {
-        res.redirect('/backend/cosplayer/add?status=success')
-      } else {
-        res.redirect(
-          `/backend/cosplayer/add?status=error%0D%0A${saveData.message}`
-        )
+        if (saveData.status == 200) {
+          res.redirect('/backend/cosplayer/add?status=success')
+        } else {
+          res.redirect(
+            `/backend/cosplayer/add?status=error%0D%0A${saveData.message}`
+          )
+        }
       }
     } else {
       res.redirect('/backend')
