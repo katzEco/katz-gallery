@@ -3,6 +3,7 @@ let mongoose = require('mongoose')
 const imageItems = new mongoose.Schema({
   url: {
     type: String,
+    unique: true,
     require: true,
   },
   albumID: {

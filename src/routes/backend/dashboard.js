@@ -1,5 +1,9 @@
 const Layout = require('./_Layout')
 
+const album = require('./pages/album')
+const cosplayer = require('./pages/cosplayer')
+const image = require('./pages/image')
+
 function dashboard() {
   const head = `<title>Backend | ${process.env.web_title}</title>
 <style>
@@ -55,6 +59,10 @@ async function backendDashBoard(app) {
       res.redirect('/backend')
     }
   })
+
+  await album(app)
+  await cosplayer(app)
+  await image(app)
 }
 
 module.exports = backendDashBoard
