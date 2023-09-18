@@ -13,7 +13,7 @@ function NavBar(authStatus) {
   </div>
   <div class="right">
     ${Button('Return Home', '/')}
-    ${authStatus == true ? Button('Logout', '/backend/logout') : ''}
+    ${authStatus == true ? Button('Logout', '/api/logout') : ''}
     <a href="#" class="button" id="theme">
       ☀️
     </a>

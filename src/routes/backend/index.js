@@ -14,7 +14,7 @@ function authPage() {
 </style>`
 
   const body = `<div class="form-container">
-  <form action="/backend/login" method="post">
+  <form action="/api/login" method="post">
     <input type="text" name="user" id="user" placeholder="Username" />
     <input type="password" name="pass" id="pass" placeholder="Password" />
     <button type="submit">Login</button>
@@ -25,8 +25,6 @@ function authPage() {
   return Layout(head, body, 'backend')
 }
 
-let session
-
 async function backendIndex(app) {
   app.get('/backend', (req, res) => {
     if (req.session.loggedIn == undefined) {
@@ -36,7 +34,7 @@ async function backendIndex(app) {
     }
   })
 
-  app.post('/backend/login', (req, res) => {
+  app.post('/api/login', (req, res) => {
     if (
       req.body.user == process.env.backend_user &&
       req.body.pass == process.env.backend_pass
@@ -51,7 +49,7 @@ async function backendIndex(app) {
     }
   })
 
-  app.get('/backend/logout', (req, res) => {
+  app.get('/api/logout', (req, res) => {
     req.session.destroy()
     res.redirect('/backend')
   })
@@ -59,4 +57,4 @@ async function backendIndex(app) {
   await backendDashBoard(app)
 }
 
-module.exports = { backendIndex, session }
+module.exports = { backendIndex }
