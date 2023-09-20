@@ -9,7 +9,7 @@ async function listingFunction() {
   for (cper of data) {
     const template = `<tr>
   <td>
-   <a href="/${cper._id}">
+   <a href="/albums/${cper._id}">
     ${(await cosplayer.findOne({ _id: cper.cpID })).cpName} - ${cper.albumName}
    </a> 
   </td>
@@ -35,7 +35,7 @@ async function listingQuery(queryID) {
   for (cper of data) {
     const template = `<tr>
   <td>
-   <a href="/${cper._id}">
+   <a href="/albums/${cper._id}">
     ${(await cosplayer.findOne({ _id: cper.cpID })).cpName} - ${cper.albumName}
    </a> 
   </td>
