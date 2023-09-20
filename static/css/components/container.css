@@ -1,4 +1,96 @@
 .mainContainer {
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.gallery {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center;
+}
+
+.img {
+  width: 15rem;
+  height: 15rem;
+
+  display: block;
+
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  text-decoration: none;
+
+  transition: all .3s;
+}
+
+.img:hover {
+  opacity: .6;
+}
+
+
+.control-container {
+  width: 80%;
+  height: 80vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.control-container .controller {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  transition: all .3s;
+}
+
+.control-container .controller:hover {
+  text-decoration: none;
+  opacity: .6;
+  cursor: pointer;
+}
+
+.control-container .controller h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.control-container .controller.hide {
+  opacity: 0;
+}
+
+.control-container .image {
+  width: 80%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.control-container .image img {
+  height: 100%;
+  width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    width: 100%;
+  }
+
+  .gallery {
+    width: 100%;
+  }
+
+  .control-container {
+    width: 100%;
+  }
 }
