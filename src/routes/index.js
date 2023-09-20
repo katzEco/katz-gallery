@@ -1,9 +1,9 @@
 const Layout = require('./_Layout')
 const albumSlug = require('./slug')
+const aboutFunction = require('./about')
 
 const album = require('../modules/mongo/schemas/album')
 const cosplayer = require('../modules/mongo/schemas/cosplayer')
-const aboutFunction = require('./about')
 
 async function IndexComponents() {
   const albData = await album.find().exec()
