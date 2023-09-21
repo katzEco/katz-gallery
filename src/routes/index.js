@@ -6,7 +6,7 @@ const album = require('../modules/mongo/schemas/album')
 const cosplayer = require('../modules/mongo/schemas/cosplayer')
 
 async function IndexComponents() {
-  const albData = await album.find().exec()
+  const albData = await album.find().sort({ _id: 'desc' }).exec()
   let dataset
 
   for (alb of albData) {
