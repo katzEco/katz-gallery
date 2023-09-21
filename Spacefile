@@ -1,0 +1,29 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: katz-gallery
+    src: ./
+    engine: nodejs16
+    run: 'node app.js'
+    dev: 'nodemon app.js'
+    primary: true
+    presets:
+      env:
+        - name: web_title
+          description: a title of the web
+        - name: backend_user
+          description: backend login user
+        - name: backend_pass
+          description: backend login password
+        - name: secret
+          description: encryption secret
+        - name: mongo_ip
+          description: mongoDB address
+        - name: mongo_user
+          description: mongoDB username
+        - name: mongo_pass
+          description: mongoDB password
+        - name: mongo_db
+          description: mongoDB databased you selected
+        - name: mongo_authSource
+          description: mongoDB authSource
