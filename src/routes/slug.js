@@ -114,7 +114,16 @@ async function imagePage(albSlug, imgSlug) {
       &gt;
     </h1>
   </a>
-</div>`
+</div>
+<script>
+  let img = document.querySelector('img')
+  
+  if (img.naturalHeight < img.naturalWidth) {
+    img.classList.add('landscape')
+  } else {
+    img.classList.add('portrait')
+  }
+</script>`
 
   return Layout(head, body, 'image')
 }

@@ -45,6 +45,7 @@
   width: 80%;
   height: 80vh;
   margin: 0 auto;
+  margin-top: 2rem;
 
   display: flex;
   flex-direction: row;
@@ -79,12 +80,25 @@
   height: 100%;
   text-align: center;
   align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .control-container .image img {
+  aspect-ratio: auto;
+}
+
+.control-container .image img.portrait {
   height: 100%;
   width: auto;
 }
+
+.control-container .image img.landscape {
+  width: 100%;
+  height: auto;
+}
+
 @media only screen and (max-width: 900px) {
   .mainContainer .text-holder {
     width: 100%;
@@ -102,5 +116,10 @@
 
   .control-container {
     width: 100%;
+  }
+
+  .img {
+    width: 10rem;
+    height: 10rem;
   }
 }
