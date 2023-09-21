@@ -4,6 +4,11 @@
   margin-bottom: 3rem;
 }
 
+.mainContainer .text-holder {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .gallery {
   width: 100%;
   margin: 0 auto;
@@ -79,6 +84,11 @@
 .control-container .image img {
   height: 100%;
   width: auto;
+}
+@media only screen and (max-width: 900px) {
+  .mainContainer .text-holder {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
