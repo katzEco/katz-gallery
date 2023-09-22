@@ -4,7 +4,7 @@ const cpModel = require('../modules/mongo/schemas/cosplayer')
 const abModel = require('../modules/mongo/schemas/album')
 const imgModel = require('../modules/mongo/schemas/item')
 
-async function albumPage(slug) {
+async function albumPage(slug, page) {
   const imgList = await imgModel
     .find({ albumID: slug })
     .sort({ _id: 'desc' })
@@ -14,16 +14,34 @@ async function albumPage(slug) {
 
   let imgSet
 
-  for (img of imgList) {
-    const inpURL = img.url.replace('https://', '')
-    const imageURL = `https://cdn.statically.io/img/${inpURL}`
+  if (imgList.length < 11) {
+    for (img of imgList) {
+      const inpURL = img.url.replace('https://', '')
+      const imageURL = `https://cdn.statically.io/img/${inpURL}`
 
-    const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${img._id}"></a>`
+      const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${img._id}"></a>`
 
-    if (imgSet == undefined) {
-      imgSet = template
-    } else {
-      imgSet += template
+      if (imgSet == undefined) {
+        imgSet = template
+      } else {
+        imgSet += template
+      }
+    }
+  } else {
+    let i = 1 * (page != undefined ? Number(page) : 1) - 1
+    let maximize = 11 * (page != undefined ? Number(page) : 1)
+
+    for (i; i < maximize; i++) {
+      const inpURL = imgList[i].url.replace('https://', '')
+      const imageURL = `https://cdn.statically.io/img/${inpURL}`
+
+      const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${imgList[i]._id}"></a>`
+
+      if (imgSet == undefined) {
+        imgSet = template
+      } else {
+        imgSet += template
+      }
     }
   }
 
@@ -130,7 +148,7 @@ async function imagePage(albSlug, imgSlug) {
 
 async function albumSlug(app) {
   app.get('/albums/:album', async (req, res) => {
-    res.send(await albumPage(req.params.album))
+    res.send(await albumPage(req.params.album.req.query.page))
   })
 
   app.get('/albums/:album/:pic', async (req, res) => {
