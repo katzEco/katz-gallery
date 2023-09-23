@@ -13,6 +13,7 @@ async function albumPage(slug, page) {
   const cosPlayer = await cpModel.findOne({ _id: album.cpID }).exec()
 
   let imgSet
+  let pageRule
 
   if (imgList.length < 11) {
     for (img of imgList) {
@@ -30,6 +31,10 @@ async function albumPage(slug, page) {
   } else {
     let i = 1 * (page != undefined ? Number(page) : 1) - 1
     let maximize = 11 * (page != undefined ? Number(page) : 1)
+
+    if (imgList.length / 10 != 1) {
+    } else {
+    }
 
     for (i; i < maximize; i++) {
       const inpURL = imgList[i].url.replace('https://', '')
@@ -55,6 +60,10 @@ async function albumPage(slug, page) {
   <div class="gallery">
     ${imgSet}
   </div>
+
+ <div>
+  ${page != undefined}
+ </div> 
 </div>`
 
   return Layout(head, body, 'album')
@@ -148,7 +157,7 @@ async function imagePage(albSlug, imgSlug) {
 
 async function albumSlug(app) {
   app.get('/albums/:album', async (req, res) => {
-    res.send(await albumPage(req.params.album.req.query.page))
+    res.send(await albumPage(req.params.album, req.query.page))
   })
 
   app.get('/albums/:album/:pic', async (req, res) => {
