@@ -12,10 +12,14 @@ async function albumPage(slug, page) {
   const album = await abModel.findOne({ _id: slug }).exec()
   const cosPlayer = await cpModel.findOne({ _id: album.cpID }).exec()
 
+  const head = `<title> ${cosPlayer.cpName} ${album.albumName} | ${process.env.web_title}</title>`
+
   let imgSet
   let pageRule
 
-  if (imgList.length < 11) {
+  console.log(imgList.length)
+
+  if (imgList.length <= 10) {
     for (img of imgList) {
       const inpURL = img.url.replace('https://', '')
       const imageURL = `https://cdn.statically.io/img/${inpURL}`
@@ -29,30 +33,88 @@ async function albumPage(slug, page) {
       }
     }
   } else {
-    let i = 1 * (page != undefined ? Number(page) : 1) - 1
-    let maximize = 11 * (page != undefined ? Number(page) : 1)
+    page = page == undefined ? 1 : page
 
-    if (imgList.length / 10 != 1) {
+    let i = page == 1 || page == undefined ? 0 : 10 * (Number(page) - 1)
+    let maximize = 10 * (page != undefined || page != 1 ? Number(page) : 1)
+
+    if (Math.ceil(imgList.length / 10) > 1) {
+      if (
+        (page != undefined ? Number(page) : 1) - 1 <=
+        Math.ceil(imgList.length)
+      ) {
+        let pagination
+
+        for (let j = 0; j < Math.ceil(imgList.length / 10); j++) {
+          let temp = `<a href="?page=${j + 1}" class="page">
+  ${j + 1}
+</a>`
+          let activeTemp = `<a href="#" class="active page">
+  ${j + 1}
+</a>`
+          if (page != j + 1) {
+            if (pagination == undefined) {
+              pagination = temp
+            } else {
+              pagination += temp
+            }
+          } else {
+            if (pagination == undefined) {
+              pagination = activeTemp
+            } else {
+              pagination += activeTemp
+            }
+          }
+        }
+
+        pageRule = `<div class="pagination">
+        ${pagination}
+</div>`
+      } else {
+        let errBody = `<div>
+  <h1>
+    404
+  </h1>
+  <p>
+    Not found
+  </p>
+</div>`
+        return Layout(head, errBody, 'album')
+      }
     } else {
+      pageRule = ''
     }
 
-    for (i; i < maximize; i++) {
-      const inpURL = imgList[i].url.replace('https://', '')
-      const imageURL = `https://cdn.statically.io/img/${inpURL}`
+    if (maximize > imgList.length) {
+      for (i; i < imgList.length; i++) {
+        const inpURL = imgList[i].url.replace('https://', '')
+        const imageURL = `https://cdn.statically.io/img/${inpURL}`
 
-      const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${imgList[i]._id}"></a>`
+        const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${imgList[i]._id}"></a>`
 
-      if (imgSet == undefined) {
-        imgSet = template
-      } else {
-        imgSet += template
+        if (imgSet == undefined) {
+          imgSet = template
+        } else {
+          imgSet += template
+        }
+      }
+    } else {
+      for (i; i < maximize; i++) {
+        const inpURL = imgList[i].url.replace('https://', '')
+        const imageURL = `https://cdn.statically.io/img/${inpURL}`
+
+        const template = `<a class="img" style="background: url(${imageURL});" href="/albums/${slug}/${imgList[i]._id}"></a>`
+
+        if (imgSet == undefined) {
+          imgSet = template
+        } else {
+          imgSet += template
+        }
       }
     }
   }
 
-  const head = `<title> ${cosPlayer.cpName} ${album.albumName} | ${process.env.web_title}</title>`
-
-  const body = `<div class="mainContainer">
+  let body = `<div class="mainContainer">
   <h1 style="margin-top: 1rem; margin-bottom: 1rem;">
     ${cosPlayer.cpName} - ${album.albumName}
   </h1>
@@ -62,7 +124,7 @@ async function albumPage(slug, page) {
   </div>
 
  <div>
-  ${page != undefined}
+  ${Math.ceil(imgList.length / 10) > 1 ? `${pageRule}` : ''}
  </div> 
 </div>`
 
