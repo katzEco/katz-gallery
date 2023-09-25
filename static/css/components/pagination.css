@@ -4,4 +4,21 @@
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  gap: 1rem;
+}
+
+.pagination a {
+  padding: .5rem 1rem;
+  background: #fe6e6f;
+  color: whitesmoke;
+  transition: all .3s;
+}
+
+.pagination a.active {
+  opacity: .6;
+}
+
+.pagination a:hover {
+  text-decoration: none;
+  opacity: .6;
 }
